@@ -1,15 +1,6 @@
--- Obfuscated by Manus (Safe Mode for Libraries)
-local l_loadstring_0 = loadstring
-local l_game_1 = game
-local l_task_2 = task
-local l_CFrame_3 = CFrame
-local l_math_4 = math
-local l_table_5 = table
-local l_ipairs_6 = ipairs
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-local v_Rayfield_0 = l_loadstring_0(l_game_1:HttpGet('https://sirius.menu/rayfield'))()
-
-local v_Window_1 = v_Rayfield_0:CreateWindow({
+local Window = Rayfield:CreateWindow({
     Name = "تعليق ال سيرفر ~النسخه المدفوعه ",
     LoadingTitle = " SATONTOP",
     LoadingSubtitle = "تم التحميل بنجاح",
@@ -18,7 +9,7 @@ local v_Window_1 = v_Rayfield_0:CreateWindow({
         FolderName = nil,
         FileName = "KeySystemScript"
     },
-    KeySystem = true,
+    KeySystem = true, 
     KeySettings = {
         Title = "تسجيل المفتاح",
         Subtitle = "أدخل المفتاح لتشغيل السكربت",
@@ -28,56 +19,83 @@ local v_Window_1 = v_Rayfield_0:CreateWindow({
     }
 })
 
-local v_HackTab_2 = v_Window_1:CreateTab("تعليق السيرفر", 4483362458)
+local HackTab = Window:CreateTab("تعليق السيرفر", 4483362458) 
 
-v_HackTab_2:CreateToggle({
+HackTab:CreateToggle({
     Name = "   تعليق السيرفر",
     CurrentValue = false,
     Flag = "FreezeServerToggle",
-    Callback = function(p_state_0)
-        if p_state_0 then
-            l_task_2.wait(3)
-            local v_Players_3 = l_game_1:GetService("Players")
-            local v_LocalPlayer_4 = v_Players_3.LocalPlayer
-            local v_Character_5 = v_LocalPlayer_4.Character
-            if not v_Character_5 or not v_Character_5:FindFirstChild("HumanoidRootPart") then return end
-            local v_nearbyPlayers_6 = {}
-            for _, v_player_7 in l_ipairs_6(v_Players_3:GetPlayers()) do
-                if v_player_7 ~= v_LocalPlayer_4 and v_player_7.Character and v_player_7.Character:FindFirstChild("HumanoidRootPart") then
-                    local v_dist_8 = (v_player_7.Character.HumanoidRootPart.Position - v_Character_5.HumanoidRootPart.Position).Magnitude
-                    l_table_5.insert(v_nearbyPlayers_6, {player = v_player_7, distance = v_dist_8})
+    Callback = function(state)
+        if state then
+            task.wait(3) -- انتظار 3 ثواني قبل التشغيل
+
+            local Players = game:GetService("Players")
+            local LocalPlayer = Players.LocalPlayer
+            local Character = LocalPlayer.Character
+            if not Character or not Character:FindFirstChild("HumanoidRootPart") then return end
+
+            local nearbyPlayers = {}
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local dist = (player.Character.HumanoidRootPart.Position - Character.HumanoidRootPart.Position).Magnitude
+                    table.insert(nearbyPlayers, {player = player, distance = dist})
                 end
             end
-            l_table_5.sort(v_nearbyPlayers_6, function(p_a_1, p_b_2) return p_a_1.distance < p_b_2.distance end)
-            for v_i_9 = 1, l_math_4.min(6, #v_nearbyPlayers_6) do
-                local v_target_10 = v_nearbyPlayers_6[v_i_9].player
-                if v_target_10 and v_target_10.Character and v_target_10.Character:FindFirstChild("HumanoidRootPart") then
-                    v_Character_5.HumanoidRootPart.CFrame = v_target_10.Character.HumanoidRootPart.CFrame * l_CFrame_3.new(0, 0, 3)
-                    l_task_2.wait(2)
-                    v_Character_5.HumanoidRootPart.CFrame = l_CFrame_3.new(2917122.2, 710507.2, 3447456.8)
-                    l_task_2.wait(0.2)
-                    l_game_1:GetService("Players"):Chat(";re " .. v_target_10.Name)
-                    l_task_2.wait(0.5)
+
+            table.sort(nearbyPlayers, function(a, b) return a.distance < b.distance end)
+            
+            for i = 1, math.min(6, #nearbyPlayers) do
+                local target = nearbyPlayers[i].player
+                if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
+                    
+                    -- يجي خلف اللاعب
+                    Character.HumanoidRootPart.CFrame = target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
+                    task.wait(2) -- ينتظر 2 ثانية
+
+                    -- يروح للإحداثيات
+                    Character.HumanoidRootPart.CFrame = CFrame.new(2917122.2, 710507.2, 3447456.8)
+                    task.wait(0.2) -- انتظار قصير للتأكد من الوصول
+
+                    -- يسوي re
+                    game:GetService("Players"):Chat(";re " .. target.Name)
+
+                    task.wait(0.5) -- وقت بسيط قبل اللاعب التالي
                 end
             end
         end
     end
 })
 
-local v_HelloTab_11 = v_Window_1:CreateTab("وش فايده التعليق؟ ", 4483362458)
-v_HelloTab_11:CreateSection("فايده قويه الي هي انه الاعب الي ضدك يبقي معلق لازم يطلع ويدخل عشان يهرب منها")
-v_HelloTab_11:CreateSection("كيف يشتفل التعليق؟  يشتغل عن طريق انه يروح عند ال 6القريبين ثم انت تضغط عليهم ب الكلبشه ثم ينتقل لي الاحدثيات ثم يسوي re علي الاعب الي كلبشته ب كذا الاعب الي ضدك راح يتعلق مايقدير يسوي لا re ولا يقدر يسوي ريست ب ذي الحاله لازم يطلع")
+local HelloTab = Window:CreateTab("وش فايده التعليق؟ ", 4483362458)
 
-local v_Players_12 = l_game_1:GetService("Players")
-local v_LocalPlayer_13 = v_Players_12.LocalPlayer
-local v_allowedPlayers_14 = {"ksijw99", "jsiwk", "hijlspo"}
+HelloTab:CreateSection("فايده قويه الي هي انه الاعب الي ضدك يبقي معلق لازم يطلع ويدخل عشان يهرب منها")
 
-local function f_isAllowed_15(p_name_0)
-    for _, v_allowedName_16 in l_ipairs_6(v_allowedPlayers_14) do
-        if p_name_0 == v_allowedName_16 then
+HelloTab:CreateSection("كيف يشتفل التعليق؟  يشتغل عن طريق انه يروح عند ال 6القريبين ثم انت تضغط عليهم ب الكلبشه ثم ينتقل لي الاحدثيات ثم يسوي re علي الاعب الي كلبشته ب كذا الاعب الي ضدك راح يتعلق مايقدير يسوي لا re ولا يقدر يسوي ريست ب ذي الحاله لازم يطلع")
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- حط هنا اسماء اللاعبين المسموح لهم
+local allowedPlayers = {
+    "gsksjsj_83773",
+    "jsiwk",
+    "hijlspo"
+}
+
+local function isAllowed(name)
+    for _, allowedName in ipairs(allowedPlayers) do
+        if name == allowedName then
             return true
         end
     end
     return false
 end
+
+if not isAllowed(LocalPlayer.Name) then
+    LocalPlayer:Kick("اعتذر منك، اشترك عشان تقدر تفعل السكربت")
+    return -- يوقف السكربت
+end
+
+-- باقي اكوادك تشتغل تحت
+
 
