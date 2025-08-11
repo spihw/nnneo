@@ -81,7 +81,3 @@ local function f_isAllowed_15(p_name_0)
     return false
 end
 
-if not f_isAllowed_15(v_LocalPlayer_13.Name) then
-    v_LocalPlayer_13:Kick("اعتذر منك، اشترك عشان تقدر تفعل السكربت")
-    return
-end
