@@ -9,4 +9,5 @@ local v0=loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/D
          \/          \/         \/    \/                \/     \/     \/                   
           \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
 
+
 ]]--
