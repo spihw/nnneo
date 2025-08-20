@@ -9,4 +9,532 @@
 
 ]]--
 
-local v0=loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))();local v1=v0:Load("سكربت ماب القنبلهBomb Map Script / First Edition ","");local v2=v0.newTab("القائمه الرئيسيه","ImageIdHere");local v3=game:GetService("Players");local v4=v3.LocalPlayer;v2.newToggle("مضاد القنبله","يمنع من القنبلة   ",false,function(v27) _G.AntiBomb=v27;local v28=v4.Character or v4.CharacterAdded:Wait() ;local v29=v28:WaitForChild("Humanoid");if v27 then v29.PlatformStand=true;v29.AutoRotate=false;v29.WalkSpeed=0 -0 ;v29.JumpPower=0 -0 ;v28.HumanoidRootPart.Velocity=Vector3.new(0,0,0 -0 );v28.HumanoidRootPart.CFrame=v28.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0 -0 ,0) ;else v29.PlatformStand=false;v29.AutoRotate=true;v29.WalkSpeed=635 -(555 + 64) ;v29.JumpPower=50;end end);v2.newToggle("مضاد التزحلق","تقدر تمشي علي الجليد      ",false,function(v30) _G.AntiSlip=v30;if (v30 or (4593<=2672)) then task.wait(0.1);game.StarterGui:SetCore("SendNotification",{Title="انتبه!",Text="اذي مت ارجع فعله",Duration=936 -(857 + 74) });end local function v31(v70) task.spawn(function() while _G.AntiSlip and v70 and v70:FindFirstChildOfClass("Humanoid")  do for v116,v117 in pairs(v70:GetChildren()) do if ((2955==2955) and (v117:IsA("BasePart") or (1168>3156))) then v117.CustomPhysicalProperties=PhysicalProperties.new(668 -(367 + 201) ,927.3 -(214 + 713) ,100);end end task.wait(0.2);end if (( not _G.AntiSlip and v70 and v70:FindFirstChildOfClass("Humanoid")) or (572>4486) or (2903==1495)) then for v127,v128 in pairs(v70:GetChildren()) do if v128:IsA("BasePart") then v128.CustomPhysicalProperties=PhysicalProperties.new(0.7,0.3,0.5 + 0 );end end end end);end if ((1404==1404) and v4.Character) then v31(v4.Character);end v4.CharacterAdded:Connect(function(v71) if ((4546>=2275) and _G.AntiSlip) then v31(v71);end end);end);local v5=nil;local v6=false;local v5=nil;local v6=false;v2.newToggle("ريتش القنبله","  انصحك يكون النت قوي   ",false,function(v32) v6=v32;if  not v32 then if ((819>=22) and v5) then v5:Destroy();v5=nil;end else task.spawn(function() while v6 do local v118=v4.Character or v4.CharacterAdded:Wait() ;local v119=v118:FindFirstChildOfClass("Tool");if ((3162==3162) and v119) then if ( not v5 or (3748<2212) or (2369>4429)) then v5=Instance.new("Part");v5.Shape=Enum.PartType.Ball;v5.Color=Color3.fromRGB(0 + 0 ,877 -(282 + 595) ,1892 -(1523 + 114) );v5.Material=Enum.Material.Neon;v5.Transparency=0.5 + 0 ;v5.Anchored=true;v5.CanCollide=false;v5.Size=Vector3.new(10,14 -4 ,1075 -(68 + 997) );v5.Parent=v119;end if ((4095>=3183) and v119:FindFirstChild("Handle")) then v5.CFrame=v119.Handle.CFrame + Vector3.new(1270 -(226 + 1044) ,2,0 -0 ) ;end elseif v5 then v5:Destroy();v5=nil;end task.wait(118 -(32 + 85) );end end);end end);local v3=game:GetService("Players");local v7=game:GetService("RunService");local v8=v3.LocalPlayer;local v9=false;local v10=30 + 0 ;v2.newToggle("التركيز على اللاعبين القريبين","يخليك تناظر أقرب لاعب ",false,function(v33) v9=v33;if (v33 or (1180==2180)) then task.wait(0.1 + 0 );game.StarterGui:SetCore("SendNotification",{Title="ملاحظة",Text="هاذا الخيار يفيدك ب join FFA",Duration=5});end end);v7.RenderStepped:Connect(function() if ((4090<4653) and v9 and v8.Character and v8.Character:FindFirstChild("HumanoidRootPart")) then local v93=v8.Character.HumanoidRootPart.Position;local v94;local v95=v10;for v105,v106 in pairs(v3:GetPlayers()) do if (((v106~=v8) and v106.Character and v106.Character:FindFirstChild("HumanoidRootPart")) or (2652<196) or (3711<1008)) then local v129=(v106.Character.HumanoidRootPart.Position-v93).Magnitude;if ((v129<v95) or (1049<=906)) then v95=v129;v94=v106;end end end if (v94 and v94.Character:FindFirstChild("HumanoidRootPart")) then local v120=v94.Character.HumanoidRootPart.Position;v8.Character.HumanoidRootPart.CFrame=CFrame.new(v93,Vector3.new(v120.X,v93.Y,v120.Z));end end end);v2.newButton("الهروب","ينقلك فوق الماب بسرعة",function() local v34=game.Players.LocalPlayer;local v35=v34.Character or v34.CharacterAdded:Wait() ;local v36=v35:FindFirstChild("HumanoidRootPart");if ((4513>2726) and (4135<4817) and v36) then v36.CFrame=v36.CFrame + Vector3.new(0,1457 -(892 + 65) ,0 -0 ) ;end end);local v11="";local v11="";local v12;local v11="";local v13;local v2=v0.newTab("الاستهدف","ImageIdHere");v2.newInput("اسم اللاعب","اكتب أول حرفين من اللاعب",function(v37) v11=v37:sub(1,2):lower();print("اللاعب المستهدف يبدأ بـ: "   .. v11 );end);v2.newToggle("تركز على اللاعب","   يركز  علي الاعب  ",false,function(v38) local v39=game.Players.LocalPlayer;local v40=v39.Character or v39.CharacterAdded:Wait() ;local v41=v40:WaitForChild("HumanoidRootPart");if (v38 or (1481>=2658)) then v13=game:GetService("RunService").RenderStepped:Connect(function() local v107;for v122,v123 in ipairs(game.Players:GetPlayers()) do if ((272==272) and (v123~=v39) and (v123.Name:sub(1 -0 ,2):lower()==v11)) then v107=v123;break;end end if ((100<=3123) and v107 and v107.Character and v107.Character:FindFirstChild("HumanoidRootPart")) then local v130=v107.Character.HumanoidRootPart.Position;local v131=(v130-v41.Position).Unit;v41.CFrame=CFrame.new(v41.Position,v41.Position + v131 );end end);elseif (v13 or (1369>4987) or (3220==1364)) then v13:Disconnect();v13=nil;end end);v2.newButton("التنقل إلى اللاعب","ينقلك  إلى اللاعب ",function() local v42=game.Players.LocalPlayer;local v43=v42.Character or v42.CharacterAdded:Wait() ;local v44=v43:WaitForChild("HumanoidRootPart");local v45;for v72,v73 in ipairs(game.Players:GetPlayers()) do if ((v73~=v42) and (v73.Name:sub(1,3 -1 ):lower()==v11)) then v45=v73;break;end end if ((v45 and v45.Character and v45.Character:FindFirstChild("HumanoidRootPart")) or (863>=4584)) then local v97=v45.Character.HumanoidRootPart;v44.CFrame=CFrame.new(v97.Position + Vector3.new(0,353 -(87 + 263) ,0) );print("تم الانتقال إلى اللاعب المستهدف!");else print("اللاعب غير موجود أو لم تدخل أول حرفين بشكل صحيح");end end);v2.newButton("إعطاء القنبلة","  يعطي الشخص قنبله ثم يهرب انصحك ب 1v1",function() local v46=game.Players.LocalPlayer;local v47=v46.Character or v46.CharacterAdded:Wait() ;local v48=v47:WaitForChild("HumanoidRootPart");local v49;for v74,v75 in ipairs(game.Players:GetPlayers()) do if (((v75~=v46) and (v75.Name:sub(1,2):lower()==v11)) or (724>=1668) or (1054>3392)) then v49=v75;break;end end if (v49 and v49.Character and v49.Character:FindFirstChild("HumanoidRootPart")) then local v99=v49.Character.HumanoidRootPart;v48.CFrame=v99.CFrame * CFrame.new(0,180 -(67 + 113) ,3 + 0 ) ;task.delay(0.5 -0 ,function() v48.CFrame=v48.CFrame + Vector3.new(0,200,0 + 0 ) ;end);else print("اللاعب المستهدف غير موجود");end end);local v2=v0.newTab("اشياء يمكن تفيدك","ImageIdHere");local v3=game:GetService("Players");local v8=v3.LocalPlayer;local v14=false;local function v15(v50) v14=v50;local v51=v8.Character;if  not v51 then return;end for v76,v77 in pairs(v51:GetDescendants()) do if ((428<1804) and v77:IsA("BasePart")) then v77.CanCollide= not v50;end end end v2.newToggle("اختراق الجدران","اختراق الجدران",false,function(v52) v15(v52);if (v52 or (3325>4613) or (676>=1642)) then print("On");else print("Off");end end);v3.LocalPlayer.CharacterAdded:Connect(function(v53) wait(3 -2 );if v14 then v15(true);end end);local v3=game:GetService("Players");local v8=v3.LocalPlayer;local v7=game:GetService("RunService");local v16=false;local v17;local function v18() local v54;local v55=math.huge;local v56=v8.Character;if ((4136>2397) and ( not v56 or  not v56:FindFirstChild("HumanoidRootPart") or (4950<=4553))) then return nil;end local v57=v56.HumanoidRootPart.Position;for v78,v79 in pairs(v3:GetPlayers()) do if (((2665<=3933) and (v79~=v8) and v79.Character and v79.Character:FindFirstChild("HumanoidRootPart")) or (4334==4245)) then local v110=(v79.Character.HumanoidRootPart.Position-v57).Magnitude;if ((v110<v55) or (4276<=3031)) then v55=v110;v54=v79;end end end return v54;end v2.newToggle(" بوت يلحق الاعبين ههههه  ","   بوت يلحق الاعبين",false,function(v58) v16=v58;if ((3273==3273) and v58) then print("On");v17=v7.RenderStepped:Connect(function() if v16 then local v133=v18();local v134=v8.Character;if ((v133 and v134 and v134:FindFirstChild("Humanoid") and v134:FindFirstChild("HumanoidRootPart")) or (4782<=1199)) then v134.Humanoid:MoveTo(v133.Character.HumanoidRootPart.Position);end end end);else print("Off");if v17 then v17:Disconnect();v17=nil;end end end);local v3=game:GetService("Players");local v8=v3.LocalPlayer;local v3=game:GetService("Players");local v8=v3.LocalPlayer;v2.newButton("التنقل لي أقرب لاعب","ينتقل مباشرة إلى أقرب لاعب",function() local v59;local v60=math.huge;local v61=v8.Character;if ( not v61 or  not v61:FindFirstChild("HumanoidRootPart") or (4864<1902)) then return;end local v62=v61.HumanoidRootPart.Position;for v80,v81 in pairs(v3:GetPlayers()) do if ((v81~=v8) and v81.Character and v81.Character:FindFirstChild("HumanoidRootPart")) then local v111=(v81.Character.HumanoidRootPart.Position-v62).Magnitude;if (v111>=v60) then else v60=v111;v59=v81;end end end if ((4839>=3700) and v59 and v59.Character and v59.Character:FindFirstChild("HumanoidRootPart")) then v61:SetPrimaryPartCFrame(v59.Character.HumanoidRootPart.CFrame + Vector3.new(0,3,952 -(802 + 150) ) );print("تم الانتقال إلى أقرب لاعب:",v59.Name);end end);local v3=game:GetService("Players");local v8=v3.LocalPlayer;local v19=2 -1 ;local v20=false;v2.newSlider("سرعة اللاعب","تتحكم بسرعة الاعب",18 -8 ,false,function(v63) v19=v63;print("تم تعيين السرعة إلى:",v19);end);v2.newButton("تشغيل السرعة","يبدأ السرعة",function() v20=true;end);v2.newButton("إيقاف السرعة","يوقف  السرعة",function() v20=false;end);game:GetService("RunService").RenderStepped:Connect(function() if ((3824>409) and v20 and (v19>0)) then local v101=v8.Character;if ((v101 and v101:FindFirstChild("Humanoid") and v101:FindFirstChild("HumanoidRootPart")) or (1075>1918)) then local v124=v101.Humanoid.MoveDirection;v101.HumanoidRootPart.Velocity=Vector3.new(v124.X * v19 * (8 + 2) ,v101.HumanoidRootPart.Velocity.Y,v124.Z * v19 * (1007 -(915 + 82)) );end end end);local v21=game:GetService("ReplicatedStorage");task.spawn(function() wait(0.5 -0 );local v64=v21:FindFirstChild("DefaultChatSystemChatEvents");if ((396<=3804) and (2087==2087) and v64) then v64.SayMessageRequest:FireServer("SAT ON TOP","All");end end);local v3=game:GetService("Players");local v8=v3.LocalPlayer;local v22={"gsksjsj_83773","خويك"};_G.ActiveUsers=_G.ActiveUsers or {} ;if ( not table.find(_G.ActiveUsers,v8.Name) or (4169==2187)) then table.insert(_G.ActiveUsers,v8.Name);end v3.PlayerAdded:Connect(function(v65) task.delay(1,function() if ((1406==1406) and ( not table.find(_G.ActiveUsers,v65.Name) or (3404>4503))) then table.insert(_G.ActiveUsers,v65.Name);end end);end);local function v23(v66) return table.find(_G.ActiveUsers,v66.Name)~=nil ;end local function v24(v67) wait(1187.1 -(1069 + 118) );game.StarterGui:SetCore("SendNotification",{Title="ملاحظة",Text=v67,Duration=5});end local function v25(v68) if v23(v68) then if (v68.Character and v68.Character:FindFirstChild("HumanoidRootPart")) then v68.Character.HumanoidRootPart.Anchored=true;end else v24("اللاعب مو مفعل السكربت!!");end end local function v26(v69) if v23(v69) then if (v69.Character or (3506<=1309)) then v69.Character:BreakJoints();end else v24("اللاعب مو مفعل السكربت!!");end end if ((1531<4271) and table.find(v22,v8.Name)) then local v82=v0.newTab("My Tab","ImageIdHere");v82.newInput("Input","أدخل اسم اللاعب.",function(v102) _G.TargetName=v102;end);v82.newButton("تجميد اللاعب","يجمد اللاعب",function() local v103=(_G.TargetName or ""):gsub("^%s*(.-)%s*$","%1");for v112,v113 in pairs(v3:GetPlayers()) do if ((635==635) and string.find(string.lower(v113.Name),string.lower(v103))) then v25(v113);end end end);v82.newButton("قتل اللاعب","يسوي ريست للاعب",function() local v104=(_G.TargetName or ""):gsub("^%s*(.-)%s*$","%1");for v114,v115 in pairs(v3:GetPlayers()) do if ((3373<=3556) and string.find(string.lower(v115.Name),string.lower(v104))) then v26(v115);end end end);end
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))();
+local window = DrRayLibrary:Load("سكربت ماب القنبلهBomb Map Script / First Edition ", "");
+local tab = DrRayLibrary.newTab("القائمه الرئيسيه", "ImageIdHere");
+local Players = game:GetService("Players");
+local plr = Players.LocalPlayer;
+tab.newToggle("مضاد القنبله", "يمنع من القنبلة   ", false, function(toggleState)
+	_G.AntiBomb = toggleState;
+	local char = plr.Character or plr.CharacterAdded:Wait();
+	local hum = char:WaitForChild("Humanoid");
+	if toggleState then
+		hum.PlatformStand = true;
+		hum.AutoRotate = false;
+		hum.WalkSpeed = 0;
+		hum.JumpPower = 0;
+		char.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0);
+		char.HumanoidRootPart.CFrame = char.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90), 0, 0);
+	else
+		hum.PlatformStand = false;
+		hum.AutoRotate = true;
+		hum.WalkSpeed = 16;
+		hum.JumpPower = 50;
+	end
+end);
+tab.newToggle("مضاد التزحلق", "تقدر تمشي علي الجليد      ", false, function(toggleState)
+	_G.AntiSlip = toggleState;
+	if toggleState then
+		task.wait(0.1);
+		game.StarterGui:SetCore("SendNotification", {Title="انتبه!",Text="اذي مت ارجع فعله",Duration=5});
+	end
+	local function applyAntiSlip(char)
+		task.spawn(function()
+			while _G.AntiSlip and char and char:FindFirstChildOfClass("Humanoid") do
+				for _, part in pairs(char:GetChildren()) do
+					if part:IsA("BasePart") then
+						part.CustomPhysicalProperties = PhysicalProperties.new(100, 0.3, 100);
+					end
+				end
+				task.wait(0.2);
+			end
+			if (not _G.AntiSlip and char and char:FindFirstChildOfClass("Humanoid")) then
+				for _, part in pairs(char:GetChildren()) do
+					if part:IsA("BasePart") then
+						part.CustomPhysicalProperties = PhysicalProperties.new(0.7, 0.3, 0.5);
+					end
+				end
+			end
+		end);
+	end
+	if plr.Character then
+		applyAntiSlip(plr.Character);
+	end
+	plr.CharacterAdded:Connect(function(char)
+		if _G.AntiSlip then
+			applyAntiSlip(char);
+		end
+	end);
+end);
+local bombReachSphere = nil;
+local bombReachEnabled = false;
+local bombReachSphere = nil;
+local bombReachEnabled = false;
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait();
+local ReachEnabled = false;
+local ReachSize = 5;
+local function applyReach()
+	local tool = Character:FindFirstChildOfClass("Tool");
+	if not tool then
+		return;
+	end
+	local part = tool:FindFirstChildWhichIsA("BasePart") or Character:FindFirstChild("RightHand") or Character:FindFirstChild("Right Arm");
+	if not part then
+		return;
+	end
+	game:GetService("RunService").RenderStepped:Connect(function()
+		if not ReachEnabled then
+			return;
+		end
+		for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+			if ((player ~= LocalPlayer) and player.Character) then
+				local hum = player.Character:FindFirstChild("HumanoidRootPart");
+				if (hum and ((hum.Position - part.Position).Magnitude <= ReachSize)) then
+					if tool:FindFirstChildWhichIsA("BasePart") then
+						firetouchinterest(tool:FindFirstChildWhichIsA("BasePart"), hum, 0);
+						firetouchinterest(tool:FindFirstChildWhichIsA("BasePart"), hum, 1);
+					end
+				end
+			end
+		end
+	end);
+end
+tab.newToggle("ريتـش للقنبله", "ريتش قوي انصحك بكون النت قوي", false, function(state)
+	ReachEnabled = state;
+	if state then
+		applyReach();
+		print(" الريتش شغال");
+	else
+		print(" توقف الريتش");
+	end
+end);
+tab.newSlider("حجم الريتش", "حدد قوة الريتش", 10, false, function(num)
+	ReachSize = num;
+end);
+LocalPlayer.CharacterAdded:Connect(function(char)
+	Character = char;
+	if ReachEnabled then
+		task.wait(1);
+		applyReach();
+	end
+end);
+local Players = game:GetService("Players");
+local RunService = game:GetService("RunService");
+local LocalPlayer = Players.LocalPlayer;
+local aimEnabled = false;
+local aimDistance = 30;
+tab.newToggle("التركيز على اللاعبين القريبين", "يخليك تناظر أقرب لاعب ", false, function(toggleState)
+	aimEnabled = toggleState;
+	if toggleState then
+		task.wait(0.1);
+		game.StarterGui:SetCore("SendNotification", {Title="ملاحظة",Text="هاذا الخيار يفيدك ب join FFA",Duration=5});
+	end
+end);
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local highlightEnabled = false;
+local highlights = {};
+tab.newToggle("كشف اللاعبين", " كشف الاعبين   ", false, function(toggleState)
+	highlightEnabled = toggleState;
+	if highlightEnabled then
+		for _, player in pairs(Players:GetPlayers()) do
+			if ((player ~= LocalPlayer) and player.Character) then
+				local char = player.Character;
+				if highlights[player] then
+					highlights[player]:Destroy();
+				end
+				local highlight = Instance.new("Highlight");
+				highlight.Adornee = char;
+				highlight.FillColor = Color3.fromRGB(255, 255, 255);
+				highlight.OutlineColor = Color3.fromRGB(255, 255, 255);
+				highlight.Parent = char;
+				highlights[player] = highlight;
+			end
+		end
+	else
+		for _, hl in pairs(highlights) do
+			if hl then
+				hl:Destroy();
+			end
+		end
+		highlights = {};
+	end
+end);
+Players.PlayerAdded:Connect(function(player)
+	if (highlightEnabled and (player ~= LocalPlayer)) then
+		player.CharacterAdded:Connect(function(char)
+			local highlight = Instance.new("Highlight");
+			highlight.Adornee = char;
+			highlight.FillColor = Color3.fromRGB(255, 255, 255);
+			highlight.OutlineColor = Color3.fromRGB(255, 255, 255);
+			highlight.Parent = char;
+			highlights[player] = highlight;
+		end);
+	end
+end);
+RunService.RenderStepped:Connect(function()
+	if (aimEnabled and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+		local myPos = LocalPlayer.Character.HumanoidRootPart.Position;
+		local closestPlayer;
+		local closestDistance = aimDistance;
+		for _, player in pairs(Players:GetPlayers()) do
+			if ((player ~= LocalPlayer) and player.Character and player.Character:FindFirstChild("HumanoidRootPart")) then
+				local distance = (player.Character.HumanoidRootPart.Position - myPos).Magnitude;
+				if (distance < closestDistance) then
+					closestDistance = distance;
+					closestPlayer = player;
+				end
+			end
+		end
+		if (closestPlayer and closestPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+			local targetPos = closestPlayer.Character.HumanoidRootPart.Position;
+			LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(myPos, Vector3.new(targetPos.X, myPos.Y, targetPos.Z));
+		end
+	end
+end);
+tab.newButton("الهروب", "ينقلك فوق الماب بسرعة", function()
+	local player = game.Players.LocalPlayer;
+	local char = player.Character or player.CharacterAdded:Wait();
+	local root = char:FindFirstChild("HumanoidRootPart");
+	if root then
+		root.CFrame = root.CFrame + Vector3.new(0, 500, 0);
+	end
+end);
+local TargetName = "";
+local TargetName = "";
+local AimConnection;
+local TargetName = "";
+local FocusConnection;
+tab.newButton("  اعاده دخول السيرفر", "  اعاده دخول السبرفر .", function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/j2ex7NdF"))();
+end);
+tab.newButton("تغير السيرفر", "تغير ال سيرفر ", function()
+	local TeleportService = game:GetService("TeleportService");
+	local PlaceID = game.PlaceId;
+	TeleportService:Teleport(PlaceID, game.Players.LocalPlayer);
+end);
+local tab = DrRayLibrary.newTab("الاستهدف", "ImageIdHere");
+tab.newInput("اسم اللاعب", "اكتب أول حرفين من اللاعب", function(text)
+	TargetName = text:sub(1, 2):lower();
+	print("اللاعب المستهدف يبدأ بـ: " .. TargetName);
+end);
+tab.newToggle("تركز على اللاعب", "   يركز  علي الاعب  ", false, function(toggleState)
+	local plr = game.Players.LocalPlayer;
+	local char = plr.Character or plr.CharacterAdded:Wait();
+	local hrp = char:WaitForChild("HumanoidRootPart");
+	if toggleState then
+		FocusConnection = game:GetService("RunService").RenderStepped:Connect(function()
+			local targetPlayer;
+			for _, p in ipairs(game.Players:GetPlayers()) do
+				if ((p ~= plr) and (p.Name:sub(1, 2):lower() == TargetName)) then
+					targetPlayer = p;
+					break;
+				end
+			end
+			if (targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+				local targetPos = targetPlayer.Character.HumanoidRootPart.Position;
+				local direction = (targetPos - hrp.Position).Unit;
+				hrp.CFrame = CFrame.new(hrp.Position, hrp.Position + direction);
+			end
+		end);
+	elseif FocusConnection then
+		FocusConnection:Disconnect();
+		FocusConnection = nil;
+	end
+end);
+tab.newButton("التنقل إلى اللاعب", "ينقلك  إلى اللاعب ", function()
+	local plr = game.Players.LocalPlayer;
+	local char = plr.Character or plr.CharacterAdded:Wait();
+	local hrp = char:WaitForChild("HumanoidRootPart");
+	local targetPlayer;
+	for _, p in ipairs(game.Players:GetPlayers()) do
+		if ((p ~= plr) and (p.Name:sub(1, 2):lower() == TargetName)) then
+			targetPlayer = p;
+			break;
+		end
+	end
+	if (targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+		local targetHRP = targetPlayer.Character.HumanoidRootPart;
+		hrp.CFrame = CFrame.new(targetHRP.Position + Vector3.new(0, 3, 0));
+		print("تم الانتقال إلى اللاعب المستهدف!");
+	else
+		print("اللاعب غير موجود أو لم تدخل أول حرفين بشكل صحيح");
+	end
+end);
+tab.newButton("إعطاء القنبلة", "  يعطي الشخص قنبله ثم يهرب انصحك ب 1v1", function()
+	local plr = game.Players.LocalPlayer;
+	local char = plr.Character or plr.CharacterAdded:Wait();
+	local hrp = char:WaitForChild("HumanoidRootPart");
+	local targetPlayer;
+	for _, p in ipairs(game.Players:GetPlayers()) do
+		if ((p ~= plr) and (p.Name:sub(1, 2):lower() == TargetName)) then
+			targetPlayer = p;
+			break;
+		end
+	end
+	if (targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+		local targetHRP = targetPlayer.Character.HumanoidRootPart;
+		hrp.CFrame = targetHRP.CFrame * CFrame.new(0, 0, 3);
+		task.delay(0.5, function()
+			hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0);
+		end);
+	else
+		print("اللاعب المستهدف غير موجود");
+	end
+end);
+local RunService = game:GetService("RunService");
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local moveConnection;
+local RunService = game:GetService("RunService");
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local moveConnection;
+local MoveToTargetEnabled = false;
+tab.newToggle("يلحق اللاعب ", "يلحق الاعب انصحك 1v1 ", false, function(toggleState)
+	MoveToTargetEnabled = toggleState;
+	if toggleState then
+		print("On");
+		moveConnection = RunService.RenderStepped:Connect(function()
+			if (MoveToTargetEnabled and TargetName) then
+				for _, plr in pairs(Players:GetPlayers()) do
+					if ((plr ~= LocalPlayer) and (plr.Name:lower():sub(1, 2) == TargetName)) then
+						local char = LocalPlayer.Character;
+						if (plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and char and char:FindFirstChild("Humanoid") and char:FindFirstChild("HumanoidRootPart")) then
+							char.Humanoid:MoveTo(plr.Character.HumanoidRootPart.Position);
+						end
+					end
+				end
+			end
+		end);
+	else
+		print("Off");
+		if moveConnection then
+			moveConnection:Disconnect();
+			moveConnection = nil;
+		end
+	end
+end);
+local tab = DrRayLibrary.newTab("اشياء يمكن تفيدك", "ImageIdHere");
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local RunService = game:GetService("RunService");
+local MoveToClosestEnabled = false;
+local moveConnection;
+local function getClosestPlayer()
+	local closestPlayer;
+	local shortestDistance = math.huge;
+	local myCharacter = LocalPlayer.Character;
+	if (not myCharacter or not myCharacter:FindFirstChild("HumanoidRootPart")) then
+		return nil;
+	end
+	local myPosition = myCharacter.HumanoidRootPart.Position;
+	for _, player in pairs(Players:GetPlayers()) do
+		if ((player ~= LocalPlayer) and player.Character and player.Character:FindFirstChild("HumanoidRootPart")) then
+			local distance = (player.Character.HumanoidRootPart.Position - myPosition).Magnitude;
+			if (distance < shortestDistance) then
+				shortestDistance = distance;
+				closestPlayer = player;
+			end
+		end
+	end
+	return closestPlayer;
+end
+tab.newToggle(" بوت يلحق الاعبين ههههه  ", "   بوت يلحق الاعبين", false, function(toggleState)
+	MoveToClosestEnabled = toggleState;
+	if toggleState then
+		print("On");
+		moveConnection = RunService.RenderStepped:Connect(function()
+			if MoveToClosestEnabled then
+				local closest = getClosestPlayer();
+				local char = LocalPlayer.Character;
+				if (closest and char and char:FindFirstChild("Humanoid") and char:FindFirstChild("HumanoidRootPart")) then
+					char.Humanoid:MoveTo(closest.Character.HumanoidRootPart.Position);
+				end
+			end
+		end);
+	else
+		print("Off");
+		if moveConnection then
+			moveConnection:Disconnect();
+			moveConnection = nil;
+		end
+	end
+end);
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+tab.newButton("التنقل لي أقرب لاعب", "ينتقل مباشرة إلى أقرب لاعب", function()
+	local closestPlayer;
+	local shortestDistance = math.huge;
+	local myCharacter = LocalPlayer.Character;
+	if (not myCharacter or not myCharacter:FindFirstChild("HumanoidRootPart")) then
+		return;
+	end
+	local myPos = myCharacter.HumanoidRootPart.Position;
+	for _, player in pairs(Players:GetPlayers()) do
+		if ((player ~= LocalPlayer) and player.Character and player.Character:FindFirstChild("HumanoidRootPart")) then
+			local distance = (player.Character.HumanoidRootPart.Position - myPos).Magnitude;
+			if (distance < shortestDistance) then
+				shortestDistance = distance;
+				closestPlayer = player;
+			end
+		end
+	end
+	if (closestPlayer and closestPlayer.Character and closestPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+		myCharacter:SetPrimaryPartCFrame(closestPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 3, 0));
+		print("تم الانتقال إلى أقرب لاعب:", closestPlayer.Name);
+	end
+end);
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local speedValue = 1;
+local speedEnabled = false;
+tab.newSlider("سرعة اللاعب", "تتحكم بسرعة الاعب", 10, false, function(num)
+	speedValue = num;
+	print("تم تعيين السرعة إلى:", speedValue);
+end);
+tab.newButton("تشغيل السرعة", "يبدأ السرعة", function()
+	speedEnabled = true;
+end);
+tab.newButton("إيقاف السرعة", "يوقف  السرعة", function()
+	speedEnabled = false;
+end);
+game:GetService("RunService").RenderStepped:Connect(function()
+	if (speedEnabled and (speedValue > 0)) then
+		local char = LocalPlayer.Character;
+		if (char and char:FindFirstChild("Humanoid") and char:FindFirstChild("HumanoidRootPart")) then
+			local moveDir = char.Humanoid.MoveDirection;
+			char.HumanoidRootPart.Velocity = Vector3.new(moveDir.X * speedValue * 10, char.HumanoidRootPart.Velocity.Y, moveDir.Z * speedValue * 10);
+		end
+	end
+end);
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local RunService = game:GetService("RunService");
+local RedClone = nil;
+local FollowConnection = nil;
+local function createRedClone(character)
+	if RedClone then
+		RedClone:Destroy();
+	end
+	local clone = character:Clone();
+	for _, v in pairs(clone:GetDescendants()) do
+		if (v:IsA("Script") or v:IsA("LocalScript") or v:IsA("Tool")) then
+			v:Destroy();
+		elseif v:IsA("BasePart") then
+			v.BrickColor = BrickColor.new("Bright red");
+			v.Material = Enum.Material.SmoothPlastic;
+		end
+	end
+	clone.Name = "RedClone";
+	clone.Parent = workspace;
+	FollowConnection = RunService.RenderStepped:Connect(function()
+		if (character:FindFirstChild("HumanoidRootPart") and clone:FindFirstChild("HumanoidRootPart")) then
+			clone:SetPrimaryPartCFrame(character.HumanoidRootPart.CFrame);
+		end
+	end);
+	RedClone = clone;
+end
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local RunService = game:GetService("RunService");
+local RedClone = nil;
+local FollowConnection = nil;
+local function createRedClone(character)
+	if RedClone then
+		RedClone:Destroy();
+	end
+	local clone = character:Clone();
+	clone.Parent = workspace;
+	clone.Name = "LocalRedClone";
+	for _, v in pairs(clone:GetDescendants()) do
+		if (v:IsA("Script") or v:IsA("LocalScript") or v:IsA("Tool")) then
+			v:Destroy();
+		elseif v:IsA("BasePart") then
+			v.BrickColor = BrickColor.new("Really red");
+			v.Material = Enum.Material.SmoothPlastic;
+		end
+	end
+	local hrp = clone:FindFirstChild("HumanoidRootPart");
+	local origHrp = character:FindFirstChild("HumanoidRootPart");
+	if (hrp and origHrp) then
+		FollowConnection = RunService.RenderStepped:Connect(function()
+			if (origHrp and hrp) then
+				hrp.CFrame = origHrp.CFrame;
+			end
+		end);
+	end
+	RedClone = clone;
+end
+tab.newToggle("تخفيف الاعب فعله مع ريتش ويصير شي قوي", "تخفيف العب", false, function(toggle)
+	if toggle then
+		if LocalPlayer.Character then
+			createRedClone(LocalPlayer.Character);
+			print(" الجسم الأحمر مفعل (Local)");
+		end
+	else
+		if RedClone then
+			RedClone:Destroy();
+			RedClone = nil;
+		end
+		if FollowConnection then
+			FollowConnection:Disconnect();
+			FollowConnection = nil;
+		end
+		print(" تم إيقاف الجسم الأحمر ");
+	end
+end);
+LocalPlayer.CharacterAdded:Connect(function(char)
+	if RedClone then
+		RedClone:Destroy();
+		RedClone = nil;
+	end
+	if FollowConnection then
+		FollowConnection:Disconnect();
+		FollowConnection = nil;
+	end
+end);
+local ReplicatedStorage = game:GetService("ReplicatedStorage");
+local allowedPlayers = {"rete740","gsksjsj_83773"};
+local LocalPlayer = game.Players.LocalPlayer;
+local canShowTab = false;
+for _, name in ipairs(allowedPlayers) do
+	if (name == LocalPlayer.Name) then
+		canShowTab = true;
+		break;
+	end
+end
+if canShowTab then
+	local tab = DrRayLibrary.newTab("استهداف اللاعبين", "ImageIdHere");
+	local TargetName = "";
+	tab.newInput("اسم اللاعب", "اكتب أول حرفين من اسم اللاعب", function(text)
+		TargetName = text:sub(1, 2):lower();
+	end);
+	tab.newButton("  يسحبه", "يقتل ويسحب ويجمد اللاعب", function()
+		local targetPlayer;
+		for _, p in ipairs(game.Players:GetPlayers()) do
+			if ((p ~= LocalPlayer) and (p.Name:sub(1, 2):lower() == TargetName)) then
+				targetPlayer = p;
+				break;
+			end
+		end
+		if (targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+			if targetPlayer:FindFirstChild("HasMyScript") then
+				local hrp = targetPlayer.Character.HumanoidRootPart;
+				targetPlayer.Character.Humanoid.PlatformStand = true;
+				hrp.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 3, 0);
+				targetPlayer.Character:BreakJoints();
+			else
+				game.StarterGui:SetCore("SendNotification", {Title="خطأ",Text=("اللاعب " .. targetPlayer.Name .. " لم يفعل  سكربت!"),Duration=3});
+			end
+		else
+			game.StarterGui:SetCore("SendNotification", {Title="خطأ",Text="اللاعب غير موجود أو لم  حرفين بشكل؟ ",Duration=3});
+		end
+	end);
+end
+game.Players.PlayerAdded:Connect(function(plr)
+end);
